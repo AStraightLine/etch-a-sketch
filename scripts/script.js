@@ -28,12 +28,18 @@ function addSketchListener() {
     });
 }
 
+function shadingListener() {
+
+}
+
 const resetButton = document.querySelector('#resetButton');
 const newSizeButton = document.querySelector('#newSizeButton');
 const gridContainer = document.getElementById('gridContainer');
 
 let gridSqaures = document.querySelectorAll('.gridSquare');
-let size = 256;
+let size = 4096;
+document.documentElement.style.setProperty("--rowNum", 64);
+document.documentElement.style.setProperty("--colNum", 64);
 
 populateGrid(size);
 
@@ -43,10 +49,17 @@ gridSqaures.forEach((div) => {
     });
 });
 
+gridSqaures.forEach((div) => {
+    
+});
+
 resetButton.addEventListener('click', clearSketch);
 
 newSizeButton.addEventListener('click', () => {
-    let newSize = prompt("How many squares per side?");
+    let newSize = 0;
+    while(newSize == 0 || newSize >= 100) {
+        newSize = prompt("How many squares per side? (For performance reasons, no greater than 100 please)");
+    }
     document.documentElement.style.setProperty("--rowNum", newSize);
     document.documentElement.style.setProperty("--colNum", newSize);
     size = newSize * newSize;

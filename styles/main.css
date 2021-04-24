@@ -1,6 +1,7 @@
 :root {
     --rowNum: 16;
     --colNum: 16;
+    --shading: rgb(255, 255, 255);
 }
 
 * {
@@ -42,5 +43,5 @@
 }
 
 .gridSquareEntered {
-    background-color: white;
+    background-color: var(--shading);
 }
