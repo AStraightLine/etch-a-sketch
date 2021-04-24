@@ -5,9 +5,9 @@ function populateGrid(size) {
         gridSquare.setAttribute("id", "gridSquare"+i);
         gridContainer.appendChild(gridSquare);
 
-        // Set background-color of each individual id so it isn't undefined later (replaces class declaration to avoid duplication)
+        // Set background-color of each individual id so it isn't undefined later (replaces class declaration to avoid duplication, but still need class for adding listners)
         let currentSqaure = document.getElementById(gridSquare.id);
-        currentSqaure.style.backgroundColor = "black";
+        currentSqaure.style.backgroundColor = "white";
     }
     gridSqaures = document.querySelectorAll('.gridSquare');
 }
@@ -20,7 +20,8 @@ function removeOldGrid() {
 
 function clearSketch() {
     gridSqaures.forEach((div) => {
-        div.classList.remove('gridSquareEntered');
+        let currentSqaure = document.getElementById(div.id);
+        currentSqaure.style.backgroundColor = "white";
     });
 }
 
@@ -28,9 +29,7 @@ function addSketchListener() {
     gridSqaures.forEach((div) => {
         div.addEventListener('mouseover', () => {
             let currentSqaure = document.getElementById(div.id);
-            if (currentSqaure.style.backgroundColor == "black") {
-                currentSqaure.style.backgroundColor = "white";
-            } else if (currentSqaure.style.backgroundColor == "white") {
+            if (currentSqaure.style.backgroundColor == "white") {
                 currentSqaure.style.backgroundColor = 'rgb(' + 250 + ',' + 250 + ',' + 250 + ')';
             } else {
                 currentColor = currentSqaure.style.backgroundColor;
@@ -74,7 +73,7 @@ resetButton.addEventListener('click', clearSketch);
 
 newSizeButton.addEventListener('click', () => {
     let newSize = 0;
-    while(newSize == 0 || newSize >= 100) {
+    while(newSize < 4 || newSize > 100) {
         newSize = prompt("How many squares per side? (For performance reasons, no greater than 100 please)");
     }
     document.documentElement.style.setProperty("--rowNum", newSize);
