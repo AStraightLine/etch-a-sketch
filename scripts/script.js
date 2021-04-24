@@ -4,20 +4,25 @@ function populateGrid(x) {
         gridSquare.classList.add("gridSquare");
         gridSquare.setAttribute("id", "gridSquare"+i);
         gridContainer.appendChild(gridSquare);
-        
-        console.log(gridSquare);
     }
 }
 
+const resetButton = document.querySelector("#resetButton");
 const gridContainer = document.querySelector("#gridContainer");
 
 populateGrid(256);
 
 const gridSqaures = document.querySelectorAll('.gridSquare');
-console.log(gridSqaures);
 
 gridSqaures.forEach((div) => {
     div.addEventListener('mouseover', () => {
         div.classList.add("gridSquareEntered");
     });
 });
+
+resetButton.addEventListener("click", () => {
+    gridSqaures.forEach((div) => {
+        div.classList.remove("gridSquareEntered");
+    });
+});
+

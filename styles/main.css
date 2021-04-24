@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+#resetButton {
+    width: 5vw;
+    height: 2.5vh;
+    margin-top: 3.5vh;
+    margin-bottom: 3.5vh;
+}
+
 #gridContainer {
     height: 80vh;
     width: 80vh;
