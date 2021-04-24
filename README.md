@@ -8,3 +8,4 @@
 8. Investigated "new size" bug but doesn't seem reproducable.
 9. Changed it to start at white and shade towards black. Now more of a shading pad than an etch-a-sketch.
 10. Fixed "clear" functionality.
+11. Added Bob and some styling.

@@ -9,23 +9,56 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("../images/bob.jpg");
+    background-color: #cccccc;
+}
+
+h1 {
+    width: 100vw;
+    height: 7.5vh;
+    line-height: 7.5vh;
+    text-align: center;
+    justify-self: center;
+    font-family: arial;
+    font-size: 2.5vw;
+    color: white;
+    background: #18a3ed;
+    font-weight: 700;
+    filter: drop-shadow(0.0em 0.35em 0.35em white);
+}
+
 #buttonsContainer {
     width: 100vw;
     display:flex;
     justify-content: center;
 }
 
+.optionsButton {
+    width: 6vw;
+    font-size: 1vw;
+    text-align: center;
+    background-color: #f7fdff;
+    border: 2px solid white;
+    filter: drop-shadow(0.4em 0.35em 0.35em black);
+    border-radius: 10px;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 0.25em;
+    font-weight: 525;
+}
+
+.optionsButton:hover {
+    background-color: #18a3ed;
+    color: white;
+}
+
 #resetButton {
-    width: 5vw;
-    height: 2.5vh;
-    margin: 3.5vh;
+    margin-right: 1.5vw;
 }
 
 #newSizeButton {
-    width: 5vw;
-    height: 2.5vh;
-    margin-top: 3.5vh;
-    margin-bottom: 3.5vh;
+    margin-left: 1.5vw;
 }
 
 #gridContainer {

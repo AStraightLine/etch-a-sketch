@@ -4,7 +4,6 @@ function populateGrid(size) {
         gridSquare.classList.add("gridSquare");
         gridSquare.setAttribute("id", "gridSquare"+i);
         gridContainer.appendChild(gridSquare);
-
         // Set background-color of each individual id so it isn't undefined later (replaces class declaration to avoid duplication, but still need class for adding listners)
         let currentSqaure = document.getElementById(gridSquare.id);
         currentSqaure.style.backgroundColor = "white";
