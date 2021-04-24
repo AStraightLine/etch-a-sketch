@@ -2,8 +2,12 @@ function populateGrid(size) {
     for (let i = 0; i < size; i++) {
         const gridSquare = document.createElement("div");
         gridSquare.classList.add("gridSquare");
-        gridSquare.setAttribute("id", "gridSquare"+size);
+        gridSquare.setAttribute("id", "gridSquare"+i);
         gridContainer.appendChild(gridSquare);
+
+        // Set background-color of each individual id so it isn't undefined later (replaces class declaration to avoid duplication)
+        let currentSqaure = document.getElementById(gridSquare.id);
+        currentSqaure.style.backgroundColor = "black";
     }
     gridSqaures = document.querySelectorAll('.gridSquare');
 }
@@ -23,12 +27,34 @@ function clearSketch() {
 function addSketchListener() {
     gridSqaures.forEach((div) => {
         div.addEventListener('mouseover', () => {
-            div.classList.add("gridSquareEntered");
+            let currentSqaure = document.getElementById(div.id);
+            if (currentSqaure.style.backgroundColor == "black") {
+                currentSqaure.style.backgroundColor = "white";
+            } else if (currentSqaure.style.backgroundColor == "white") {
+                currentSqaure.style.backgroundColor = 'rgb(' + 250 + ',' + 250 + ',' + 250 + ')';
+            } else {
+                currentColor = currentSqaure.style.backgroundColor;
+                currentColor = currentColor.slice(4, 7);
+                currentColor = parseInt(currentColor);
+                if (currentColor > 0) {
+                    nextColor = currentColor - 25;
+                    currentSqaure.style.backgroundColor = 'rgb(' + nextColor + ',' + nextColor + ',' + nextColor + ')';
+                } else {
+                    return;
+                } 
+            }
         });
     });
 }
 
-function shadingListener() {
+function shadingListener(divID) {
+    let currentSqaure = document.getElementById(divID);
+    currentColor = currentSqaure.style.backgroundColor;
+    if (currentColor == null) {
+        currentColor.style.backgroundColor = "red";
+    } else {
+        return;
+    }
 
 }
 
@@ -42,16 +68,7 @@ document.documentElement.style.setProperty("--rowNum", 64);
 document.documentElement.style.setProperty("--colNum", 64);
 
 populateGrid(size);
-
-gridSqaures.forEach((div) => {
-    div.addEventListener('mouseover', () => {
-        div.classList.add("gridSquareEntered");
-    });
-});
-
-gridSqaures.forEach((div) => {
-    
-});
+addSketchListener();
 
 resetButton.addEventListener('click', clearSketch);
 
