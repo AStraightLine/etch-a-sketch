@@ -1,10 +1,27 @@
+:root {
+    --rowNum: 16;
+    --colNum: 16;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+#buttonsContainer {
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+}
+
 #resetButton {
+    width: 5vw;
+    height: 2.5vh;
+    margin: 3.5vh;
+}
+
+#newSizeButton {
     width: 5vw;
     height: 2.5vh;
     margin-top: 3.5vh;
@@ -16,8 +33,8 @@
     width: 80vh;
     margin: auto;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;    
+    grid-template-columns: repeat(var(--colNum), auto);
+    grid-template-rows: repeat(var(--rowNum), auto);    
 }
 
 .gridSquare {
